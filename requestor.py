@@ -13,7 +13,7 @@ async def worker(context: WorkContext, tasks: AsyncIterable[Task]):
 
         # upload & run the provider.sh script
         script.upload_file("provider.sh", "/golem/input/provider.sh")
-        future_result = script.run("/bin/sh", "-x", "/golem/input/provider.sh")
+        future_result = script.run("/bin/sh", "/golem/input/provider.sh")
 
         yield script
 
@@ -31,6 +31,7 @@ async def main():
         async for completed in golem.execute_tasks(worker, tasks, payload=package):
             # print out the console output
             print(completed.result.stdout)
+            print(completed.result.stderr)
 
 
 if __name__ == "__main__":
