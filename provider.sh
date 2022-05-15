@@ -33,9 +33,6 @@ free -h
 # BENCHMARKING FUN GIGGLES
 echo "| ---------------------------- BENCHMARKING ---------------------------- |"
 
-echo "RUNNING stress-ng --cpu 1 --cpu-method matrixprod --metrics-brief --perf -t 20"
-stress-ng --cpu 1 --cpu-method matrixprod --metrics-brief --perf -t 10
-
 # CPU
 echo "RUNNING sysbench cpu --cpu-max-prime=10000 run"
 sysbench cpu --cpu-max-prime=10000 run
@@ -47,3 +44,6 @@ sysbench fileio --file-total-size=100M prepare
 # MEMORY
 echo "RUNNING sysbench memory --memory-block-size=1K --memory-total-size=1G --num-threads=1 run"
 sysbench memory --memory-block-size=1K --memory-total-size=1G --num-threads=1 run
+
+echo "RUNNING stress-ng --cpu 1 --cpu-method matrixprod --metrics-brief --perf -t 20"
+stress-ng --cpu 1 --cpu-method matrixprod --metrics-brief --perf -t 20s
