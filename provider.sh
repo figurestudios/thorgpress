@@ -45,5 +45,5 @@ sysbench fileio --file-total-size=100M prepare
 echo "RUNNING sysbench memory --memory-block-size=1K --memory-total-size=1G --num-threads=1 run"
 sysbench memory --memory-block-size=1K --memory-total-size=1G --num-threads=1 run
 
-echo "RUNNING stress-ng --matrix 1 -t 1m"
-stress-ng --matrix 1 -t 1m
+echo "RUNNING stress-ng --cpu 1 --cpu-method matrixprod --metrics-brief --perf -t 20"
+stress-ng --cpu 1 --cpu-method matrixprod --metrics-brief --perf -t 20s
