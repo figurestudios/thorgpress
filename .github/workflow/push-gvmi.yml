@@ -14,7 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       run: docker build . --file Dockerfile --tag thorgpress:latest
-    steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
       with:
