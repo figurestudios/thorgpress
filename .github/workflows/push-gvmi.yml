@@ -21,8 +21,8 @@ jobs:
     - run: pip install gvmkit-build
     - run: docker build -t thorgpress:latest .
     - run: gvmkit-build thorgpress:latest
-    - run: gvmkit-build thorgpress:latest --push > ./out/push
-    - run: grep -i "hash link" ./out/push
+    - run: gvmkit-build thorgpress:latest --push > out/push
+    - run: grep -i "hash link" out/push
     - name: "Deploy to Skynet using Resolver Link"
       uses: SkynetLabs/deploy-to-skynet-action@v2
       with:
