@@ -1,0 +1,24 @@
+name: Push GVMI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # in this example, there is a newer version already installed, 3.7.7, so the older version will be downloaded
+        python-version: ['3.6.1']
+    steps:
+    - uses: btmc/github-action-docker-build@v1
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    - run: pip install gvmkit-build
+    - run: docker build -t thorgpress:latest .
+    - run: gvmkit-build thorgpress:latest
+    - run: gvmkit-build thorgpress:latest --push
