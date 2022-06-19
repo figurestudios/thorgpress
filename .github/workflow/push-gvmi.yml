@@ -12,7 +12,8 @@ jobs:
         # in this example, there is a newer version already installed, 3.7.7, so the older version will be downloaded
         python-version: ['3.6.1']
     steps:
-    - uses: btmc/github-action-docker-build@v1
+    - uses: actions/checkout@v3
+      run: docker build . --file Dockerfile --tag thorgpress:latest
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
