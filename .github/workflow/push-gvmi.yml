@@ -13,11 +13,11 @@ jobs:
         python-version: ['3.6.1']
     steps:
     - uses: actions/checkout@v3
-      run: docker build . --file Dockerfile --tag thorgpress:latest
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
+    - run: docker build . --file Dockerfile --tag thorgpress:latest
     - run: pip install gvmkit-build
     - run: docker build -t thorgpress:latest .
     - run: gvmkit-build thorgpress:latest
