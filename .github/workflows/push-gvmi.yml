@@ -21,4 +21,5 @@ jobs:
     - run: pip install gvmkit-build
     - run: docker build -t thorgpress:latest .
     - run: gvmkit-build thorgpress:latest
-    - run: gvmkit-build thorgpress:latest --push
+    - run: gvmkit-build thorgpress:latest --push > out
+    - run: grep -i "hash link" out
